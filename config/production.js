@@ -1,6 +1,6 @@
 module.exports= {
 
-    APP_PORT:9999,
+    APP_PORT:3001,
     APP_BASE_URL:'',
     APP_DB_CONNECT:'mongodb://localhost/freeze-api',
 
