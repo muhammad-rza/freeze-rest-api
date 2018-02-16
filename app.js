@@ -1,8 +1,6 @@
+/** GLOBAL PATH **/
 global.MAIN_ROOT_PATH = __dirname;
 global.APP_ROOT_PATH = __dirname + '/app/';
-
-
-//global path
 require('./config/global_path');
 
 
@@ -44,16 +42,16 @@ app.use(APP_INIT.APP_API_PREFIX, require(API_ROUTE_PATH)); //api routes
 
 app.use((req, res, next) => {
     res.locals = {
-    example : 'example',
-};
-next();
+     example : 'example',
+    };
+    next();
 });
 
 app.use((req, res, next) => {
 
     var err = new Error('Not Found');
-err.status = 404;
-next(err);
+    err.status = 404;
+    next(err);
 
 });
 
@@ -65,12 +63,11 @@ next(err);
 app.use((err, req, res, next) => {
     // set locals, only providing error in development
     res.locals.message = err.message;
-res.locals.error = NODE_ENV === 'development' ? err : {};
+    res.locals.error = NODE_ENV === 'development' ? err : {};
 
-// render the error page
-res.status(err.status || 500).json(err);
+    // render the error status
+    res.status(err.status || 500).json(err);
 
-// res.send('page not found')
 });
 
 
