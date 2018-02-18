@@ -2,7 +2,8 @@ const router = require('express').Router();
 
 
 
-router.use('/',require(API_ROUTE_PATH + 'router-list'));
+
+router.use('/', require(__dirname + '/example.route'));
 
 
 

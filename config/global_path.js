@@ -23,9 +23,6 @@ catch(e){
 global.NODE_ENV = process.env.NODE_ENV;
 
 
-
-
-
 /**
 * Api directory paths
 * */
