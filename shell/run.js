@@ -15,7 +15,7 @@ program
 program
     .command('createController <controllerName>')
     .action((controllerName) => {
-    cmd_list.controller('create' , controllerName);
+    cmd_list.controller.create(controllerName);
 });
 
 

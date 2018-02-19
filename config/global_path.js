@@ -6,7 +6,11 @@
 var {cmd_color} = require('../lib/cmd_color');
 
 try {
-    global.APP_INIT = require('../config/'+process.env.NODE_ENV); // output  ( development or production )
+
+    if(typeof process.env.NODE_ENV == 'undefined')
+        global.APP_INIT = require('../config/development'); // output  ( development or production )
+    else
+        global.APP_INIT = require('../config/'+process.env.NODE_ENV); // output  ( development or production )
 }
 
 catch(e){
