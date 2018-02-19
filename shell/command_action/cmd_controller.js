@@ -11,17 +11,16 @@ module.exports = {
 
     create(fileName) {
 
-        let onlyFileName =
-
-        createFile(route_path+fileName+file_name_suffix ,fileName.split('/').splice(-1,1))
+        let onlyFileName = createFile(route_path+fileName+file_name_suffix ,fileName.split('/').splice(-1,1))
 
     },
     remove() {}
 
 }
 
-var fs = require('fs');
-
+var mkdirp = require("mkdirp")
+var fs = require("fs")
+var getDirName = require("path").dirname
 
 function createFile(filenameWithDir , filename) {
 
@@ -34,32 +33,25 @@ function createFile(filenameWithDir , filename) {
         fs.readFile('shell/blue_print/controller.js',  'utf8' , (err, data) => {
 
 
+
             let newCreatedFile = data.replace('<controllerName>' ,filename.toString()+file_name_suffix );
 
+            writeFile(filenameWithDir+'.js' ,newCreatedFile , function(err) {
 
-            fs.writeFile(filenameWithDir+'.js', newCreatedFile , function(err) {
-                if(err) {
-                    return console.log(err);
-                }
-
-                console.log("The file was saved!");
-            });
-
-
+                if(err) console.log('error')
+                else  console.log(filename+' was created successfull')
+            } )
 
 
          });
-
-
-        // fs.writeFile(filename, "Hey there!", function(err) {
-        //     if(err) {
-        //         return console.log(err);
-        //     }
-        //
-        //     console.log("The file was saved!");
-        // });
-
     }
 
 
+}
+
+function writeFile (path, contents, cb) {
+    mkdirp(getDirName(path), function (err) {
+        if (err) return cb(err)
+        fs.writeFile(path, contents, cb)
+    })
 }
