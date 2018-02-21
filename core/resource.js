@@ -34,8 +34,6 @@ module.exports = function(router) {
 
     module.makeRoute = function(prefix ,controller, ...args){
 
-        console.log(controller)
-
         prefix = prefix.replace(/^\/|\/$/g, '');
 
         let share_link = resource_link.map((item , index) => {

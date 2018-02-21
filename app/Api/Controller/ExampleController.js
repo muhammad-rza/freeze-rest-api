@@ -1,27 +1,87 @@
 const BaseController = require(APP_ROOT_PATH + 'base/BaseController');
 
+const ExampleModel = require('../Model/Example');
+
 
 class ExampleController extends BaseController  {
 
     constructor() {
 
 
+;
         super();
-        // console.log(this)
 
-    }
-
-
-    index(req,res,next){
-
-       return res.send('ExampleController')
+        this.controllerName = 'Example';
 
     };
-    create(req,res,next){
+    index(req,res,next) {
 
-        return res.send('ExampleController')
+        res.action_name = 'index';
+        res.status(200).json({action_name:res.action_name})
 
-    }
+        // your code
+
+    };
+
+    create(req,res,next) {
+
+        res.action_name = 'create'
+        res.status(200).json({action_name:res.action_name});
+
+        // your code
+
+    };
+
+    store(req,res,next) {
+
+        res.action_name = 'store';
+        res.status(200).json({action_name:res.action_name})
+
+        // your code
+
+    };
+
+    show(req,res,next) {
+
+        res.action_name = 'show';
+
+        res.status(200).json({action_name:res.action_name})
+        // your code
+
+    };
+
+    edit(req,res,next) {
+
+        res.action_name = 'edit';
+
+        res.status(200).json({action_name:res.action_name})
+        // your code
+
+    };
+
+    update(req,res,next) {
+
+        res.action_name = 'update'
+        res.status(200).json({action_name:res.action_name});
+
+        // your code
+
+    };
+
+    destroy(req,res,next) {
+
+        res.action_name = 'destroy' +
+            'res.json(200'.json({action_name:res.action_name});
+
+        // your code
+
+    };
+
+    /*====================================================/
+    *    YOUR OWN CONTROLLER`S FUNCTIONS START FROM HERE
+    * ===================================================*/
+
+
 
 }
 

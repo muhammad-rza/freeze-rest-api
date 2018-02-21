@@ -24,7 +24,9 @@ var getDirName = require("path").dirname
 
 function createFile(filenameWithDir , filename) {
 
-    if (fs.existsSync(filenameWithDir+'.js')) {
+    let fileFullName = filenameWithDir+'.js';
+
+    if (fs.existsSync(fileFullName)) {
 
         console.log('Upps '+filename+' already exists')
 
@@ -34,9 +36,13 @@ function createFile(filenameWithDir , filename) {
 
 
 
-            let newCreatedFile = data.replace('<controllerName>' ,filename.toString()+file_name_suffix );
+            let newCreatedFile = data.replace(new RegExp("<controllerName>", 'g')  ,filename.toString() );
 
-            writeFile(filenameWithDir+'.js' ,newCreatedFile , function(err) {
+
+            newCreatedFile = newCreatedFile.replace('<modelPath>' , '../Model');
+
+
+            writeFile(fileFullName ,newCreatedFile , function(err) {
 
                 if(err) console.log('error')
                 else  console.log(filename+' was created successfull')
